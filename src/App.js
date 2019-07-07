@@ -30,10 +30,10 @@ class App extends Component {
           topScore={this.state.topScore}
         />
         <Header
-          title={"Stranger Things Characters"}
-          instructions={
-            "Test your memory. See how many times you can select a character only once!"
-          }
+        // title={"Stranger Things Characters"}
+        // instructions={
+        //   "Test your memory. See how many times you can select a character only once!"
+        // }
         />
 
         <Wrapper>
