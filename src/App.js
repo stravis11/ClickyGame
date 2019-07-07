@@ -19,6 +19,59 @@ class App extends Component {
     gameMsg: "Click a character to begin!"
   };
 
+  selectImage = id => {
+    // If image has already been selected then game ends
+    if (this.state.selectedImages.includes(id)) {
+      this.setState({ gameMsg: "You lose. The Mind Flayer has won!" });
+      this.resetGame();
+    }
+    // Else increment the score
+    else {
+      const score = this.state.currentScore + 1;
+
+      // Update topScore if currentScore is greater than current topScore
+      if (score > this.state.topScore) {
+        this.setState({ topScore: score });
+      }
+
+      // If selected all images without repeating, then user wins
+      if (score === maxScore) {
+        this.setState({
+          gameMsg: "Congratulations, you defeated the Mind Flayer!"
+        });
+        this.resetGame();
+      }
+      // Add current image id to selectedImages array, update score, shuffle images and continue playing
+      else {
+        this.setState({ gameMsg: "You guessed correctly!" });
+        this.setState({ selected: this.state.selectedImages.push(id) });
+        this.setState({ currentScore: score });
+        this.shuffleImages();
+      }
+    }
+  };
+
+  shuffleImages = () => {
+    const shuffledImages = this.shuffleArray(characters);
+    this.setState({ characters: shuffledImages });
+  };
+
+  // Shuffle array
+  shuffleArray = arr => {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  };
+
+  // Resets game parameters and shuffle images
+  resetGame = () => {
+    this.setState({ currentScore: 0 });
+    this.setState({ selectedImages: [] });
+    this.shuffleImages();
+  };
+
   // Render the page
   render() {
     return (
