@@ -6,8 +6,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import characters from "./characters.json";
 
-// Set max score
-const maxScore = characters.length;
+// Set winning score
+const winScore = characters.length;
 
 class App extends Component {
   // Set this.state.characters to the characters json array
@@ -35,7 +35,7 @@ class App extends Component {
       }
 
       // If selected all images without repeating, then user wins
-      if (score === maxScore) {
+      if (score === winScore) {
         this.setState({
           gameMsg: "Congratulations, you defeated the Mind Flayer!"
         });
