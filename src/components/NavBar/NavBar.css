@@ -5,8 +5,28 @@
   position: fixed;
   width: 100%;
   color: red;
-  font-size: 2rem;
+  font-size: 2em;
   text-shadow: 2px 2px 2px black;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   z-index: 10;
+}
+
+/*
+    These rules take effect when the browser's width
+    is either 1050px or less.
+  */
+@media screen and (max-width: 1050px) {
+  .navbar {
+    font-size: 1.5em;
+  }
+}
+
+/*
+    These rules take effect when the browser's width
+    is either 790px or less.
+  */
+@media screen and (max-width: 790px) {
+  .navbar {
+    font-size: 1em;
+  }
 }
